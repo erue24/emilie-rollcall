@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import SessionList from './components/SessionList';
+import Session from './components/Session';
 
 /* NOTES:
 > We are creating a REACT state variable. We use them because the REACT framework will keep an eye on them. Anytime they change, the REACT framework will change all the pages that use this variable 
@@ -121,14 +121,21 @@ function App() {
           </li>
         </ul>
         <h1>Rollcall App</h1>
-        <Routes>
-          <Route path="/" element={
-            // creating a component and passing it a prop. The name of the prop is the one that was set in the hook
-            < SessionList sessions={rollCallSessions} />}
-          />
-          <Route path="/about" element={<p>Made with love by Emilie</p>}
-          />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={
+              // creating a component and passing it a prop. The name of the prop is the one that was set in the hook
+              < SessionList sessions={rollCallSessions} />}
+            />
+            <Route path="/about" element={<p>Made with love by Emilie</p>}
+            />
+            {/* THIS ROUTE IS THE ONE IN THE SESSIONLIST COMPONENT  */}
+            {/* :sid is a parameter id that stands for session ID (we made that name up) */}
+            <Route path="/session/:sid" element={<Session sessions={rollCallSessions} />}
+            // ^ Here, you're passing the /sessions all the sessions components with a prop called sessions
+            />
+          </Routes>
+        </div>
       </Router>
 
 

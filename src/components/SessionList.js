@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Unpack the prop. This component is passed a prop called sessions. Sessions is your array
 const SessionList = ({ sessions }) => {
@@ -12,7 +13,9 @@ const SessionList = ({ sessions }) => {
                 {sessions.map((sessionItemInArray) => (
                     // Each list item must have a key. Each key has to have a unique identifier
                     <li key={sessionItemInArray.id}>
-                        {sessionItemInArray.name}, {sessionItemInArray.date}
+                        <Link to={`/session/${sessionItemInArray.id}`}>
+                            {sessionItemInArray.name}
+                        </Link>, {sessionItemInArray.date}
                     </li>
 
                 ))}
