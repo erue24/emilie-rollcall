@@ -55,7 +55,7 @@ const defaultSession = [
       {
         id: 2,
         fName: "John",
-        present: false
+        present: true
       },
       {
         id: 3,
@@ -93,7 +93,7 @@ const defaultSession = [
       {
         id: 4,
         fName: "Emilie",
-        present: false
+        present: true
       }
     ]
   }

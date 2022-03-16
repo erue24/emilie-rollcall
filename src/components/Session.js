@@ -15,11 +15,29 @@ const Session = ({ sessions }) => {
     // Now, we're going through the sessions to find the one that has the ID that we need. All JS arrays have a FIND function. Store it in a const after
     const selectedSession = sessions.find((item) => (item.id === sessionIDParam));
 
+    const handleBackButton = () => (
+        navigate(-1)
+    )
+
     return (
         <>
             <h3>{selectedSession.name}</h3>
+
+            <p>Date: {selectedSession.date} | Start Time: {selectedSession.sTime} | End Time: {selectedSession.eTime} </p>
+            <ul className="studentList">
+                {/* call each thing student, map it to a list item. each li needs a unique key */}
+                {selectedSession.rollcall.map((student) => (
+                    <li key={student.id}>
+                        <input type="checkbox" defaultChecked={student.present} />
+                        {student.fName}
+                    </li>
+                ))}
+            </ul>
+
             {/* navigate(-1) means go back up one page */}
-            <button onClick={() => (navigate(-1))}>Back</button>
+            {/*ONE WAY TO WRITE IT: <button onClick={() => (navigate(-1))}>Back</button> */}
+
+            <button onClick={handleBackButton}>Back</button>
         </>
     )
 }
