@@ -1,5 +1,6 @@
 
 import './App.css';
+import SessionList from './components/SessionList';
 
 
 
@@ -97,6 +98,7 @@ function App() {
 
       </header>
       <h1>Rollcall App</h1>
+      <SessionList />
 
     </div>
   );
