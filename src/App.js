@@ -1,7 +1,14 @@
 
+import { useState } from 'react';
 import './App.css';
 import SessionList from './components/SessionList';
 
+/* NOTES:
+> We are creating a REACT state variable. We use them because the REACT framework will keep an eye on them. Anytime they change, the REACT framework will change all the pages that use this variable 
+> to use a REACT state variable, we use the useState HOOK  
+> a hook is just a function. UseState is a hook. When you call it, React will automatically import it.
+
+*/
 
 
 
@@ -92,13 +99,19 @@ const defaultSession = [
 ];
 
 function App() {
+  /*
+   The thing in the [] is [what you want to call the array, function you can call anytime you want to set this variable]
+   */
+  const [rollCallSessions, setRollCallSessions] = useState(defaultSession);
+
   return (
     <div className="App">
       <header className="App-header">
 
       </header>
       <h1>Rollcall App</h1>
-      <SessionList />
+      {/* creating a component and passing it a prop. The name of the prop is the one that was set in the hook */}
+      <SessionList sessions={rollCallSessions} />
 
     </div>
   );
