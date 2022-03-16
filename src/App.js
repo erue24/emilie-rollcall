@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import SessionList from './components/SessionList';
 
@@ -106,12 +107,33 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* Download the router package by typing npm install react-router-dom@latest */}
+      {/* Routers have Routes. Routes have a route */}
+      {/* For every link you have, you need a route that matches it. Every route also needs an element that it displays */}
+      <Router>
+        <header className="App-header"></header>
+        <ul className="navbar">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+        <h1>Rollcall App</h1>
+        <Routes>
+          <Route path="/" element={
+            // creating a component and passing it a prop. The name of the prop is the one that was set in the hook
+            < SessionList sessions={rollCallSessions} />}
+          />
+          <Route path="/about" element={<p>Made with love by Emilie</p>}
+          />
+        </Routes>
+      </Router>
 
-      </header>
-      <h1>Rollcall App</h1>
-      {/* creating a component and passing it a prop. The name of the prop is the one that was set in the hook */}
-      <SessionList sessions={rollCallSessions} />
+
+
+
 
     </div>
   );
