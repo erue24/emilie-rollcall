@@ -3,6 +3,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const Session = ({ sessions }) => {
+    // useNavigate allows you to navigate between different components 
     const navigate = useNavigate();
 
     const parameters = useParams();
@@ -17,6 +18,8 @@ const Session = ({ sessions }) => {
     return (
         <>
             <h3>{selectedSession.name}</h3>
+            {/* navigate(-1) means go back up one page */}
+            <button onClick={() => (navigate(-1))}>Back</button>
         </>
     )
 }
