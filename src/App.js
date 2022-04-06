@@ -105,6 +105,16 @@ function App() {
    */
   const [rollCallSessions, setRollCallSessions] = useState(defaultSession);
 
+  //Create sessionID and newName as variables that you're going to store data into
+  const updateSessionName = (sessionID, newName) => {
+    //pass the find function the particular item that you're passing into it
+    //NOTE: GOOGLE HOW FIND FUNCTIONS WORK. FIND FUNCTIONS ARE JS NOT REACT 
+    //NOTE: GET COMFORTABLE WITH MAP AND FIND FUNCTIONS OF AN ARRAY 
+    const theSessionToUpdate = rollCallSessions.find((item) => (item.id === sessionID));
+    theSessionToUpdate.name = newName;
+    setRollCallSessions(rollCallSessions);
+  }
+
   return (
     <div className="App">
       {/* Download the router package by typing npm install react-router-dom@latest */}
@@ -131,7 +141,7 @@ function App() {
             />
             {/* THIS ROUTE IS THE ONE IN THE SESSIONLIST COMPONENT  */}
             {/* :sid is a parameter id that stands for session ID (we made that name up) */}
-            <Route path="/session/:sid" element={<Session sessions={rollCallSessions} />}
+            <Route path="/session/:sid" element={<Session sessions={rollCallSessions} changeName={updateSessionName} />}
             // ^ Here, you're passing the /sessions all the sessions components with a prop called sessions
             />
           </Routes>
